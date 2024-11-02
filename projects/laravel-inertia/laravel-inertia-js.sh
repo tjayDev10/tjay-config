@@ -133,19 +133,19 @@ add_vue_directories () {
   output_empty_line
 }
 
-add_configuration_files () {
+add_configuration_files_from_stubs () {
   output_active "## Adding configuration files"
 
   # Tailwind
-  if [ -d "$initial_directory/configs/tailwind" ]; then
-    command cp "$initial_directory"/configs/tailwind/* "$install_directory"
+  if [ -d "$initial_directory/stubs/tailwind" ]; then
+    command cp "$initial_directory"/stubs/tailwind/* "$install_directory"
     output_success "=> Tailwind configurations created in $install_directory"
     else
       output_warning "Skipped: Missing configurations folder for Tailwind in $initial_directory"
   fi
 
-  if [ -d "$initial_directory/configs/inertia" ]; then
-    command cp "$initial_directory"/configs/tailwind/* "$install_directory"
+  if [ -d "$initial_directory/stubs/inertia" ]; then
+    command cp "$initial_directory"/stubs/tailwind/* "$install_directory"
     output_success "=> Inertia configurations created in $install_directory"
     else
       output_warning "Skipped: Missing configurations folder for Inertia in $initial_directory"
@@ -169,7 +169,7 @@ main () {
   add_vue_directories
 
   # Configuration Files
-  add_configuration_files
+  add_configuration_files_from_stubs
 
   command cd "$initial_directory" || { output_error "Error: Could not go back to initial directory!"; exit 1; }
 }
