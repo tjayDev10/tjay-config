@@ -152,7 +152,7 @@ add_configuration_files () {
   fi
 
   output_empty_line
-}sdf
+}
 
 main () {
   laravel_folder="${1:-$laravel_folder}"
